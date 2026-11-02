@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050b18"><title>BAKHTIYAR AI</title>
+<style>
+:root{color-scheme:dark;--bg:#050b18;--panel:#101d32;--line:#263e60;--blue:#318cff;--muted:#a9bedb}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#102a50 0,#050b18 42%);color:#f5f8ff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+.app{max-width:650px;margin:auto;padding:env(safe-area-inset-top) 16px calc(94px + env(safe-area-inset-bottom))}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 2px}.brand{font-weight:850;letter-spacing:1.6px;font-size:19px}.brand span{color:#56aaff}.pill{border:1px solid #315987;border-radius:99px;padding:7px 11px;color:#8ec4ff;font-size:12px}
+.hero{text-align:center;padding:25px 0 22px}.brain{font-size:48px;filter:drop-shadow(0 0 16px #168bff)}h1{font-size:32px;letter-spacing:2px;margin:8px 0}.sub{color:var(--muted);font-size:14px}
+.greeting,.panel,.agent,.chatbox{background:linear-gradient(145deg,#12233d,#0b1424);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px #0003}
+.greeting{padding:17px;margin:10px 0 22px}.greeting strong{font-size:18px}.greeting p{margin:7px 0 0;color:#c4d5eb}
+.section{font-size:17px;font-weight:750;margin:22px 2px 12px}.agents{display:grid;grid-template-columns:1fr 1fr;gap:11px}.agent{padding:16px 13px;min-height:122px;text-align:left;color:white;cursor:pointer}.agent:active,button:active{transform:scale(.98)}.ico{font-size:25px}.agent b{display:block;margin:9px 0 5px}.agent small{color:var(--muted);line-height:1.35}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.chip{background:#10213a;border:1px solid #29466c;color:#b8d9ff;border-radius:99px;padding:10px 12px;font-size:12px}
+.chatbox{margin-top:18px;padding:14px}.chathead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.chathead small{color:#75b8ff}.messages{display:flex;flex-direction:column;gap:10px;max-height:42vh;overflow:auto;padding:3px}.bubble{padding:12px 13px;border-radius:15px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}.ai{background:#1a2b44;align-self:flex-start;max-width:92%}.user{background:#17457a;align-self:flex-end;max-width:92%}
+.composer{display:flex;gap:8px;margin-top:12px}.composer textarea{flex:1;resize:none;min-height:45px;max-height:110px;border:1px solid #345477;border-radius:14px;background:#081322;color:white;padding:12px;font:inherit}.send{border:0;border-radius:14px;background:linear-gradient(135deg,#3da0ff,#1765db);color:white;padding:0 17px;font-weight:700}
+footer{position:fixed;bottom:0;left:0;right:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#07101feF;border-top:1px solid #243a5a;display:flex;justify-content:center;gap:28px;color:#9eb3d3;font-size:12px}footer span:first-child{color:#59aaff}
+.status{color:#8fa7c8;font-size:11px;text-align:center;margin-top:10px}
+@media(min-width:600px){.app{padding-top:20px}.hero{padding-top:40px}}
+</style></head>
+<body><main class="app">
+<header><div class="brand">✧ <span>BAKHTIYAR</span> AI</div><div class="pill">PERSONAL AI</div></header>
+<section class="hero"><div class="brain">✧</div><h1>BAKHTIYAR AI</h1><div class="sub">Твой персональный ИИ-помощник</div></section>
+<section class="greeting"><strong>Привет! 👋</strong><p>Планируй, создавай и достигай своих целей.</p></section>
+<div class="section">Твои ИИ-агенты</div>
+<section class="agents">
+<button class="agent" data-agent="Бизнес AI"><div class="ico">💼</div><b>Бизнес AI</b><small>Продажи · Проекты · Поставщики</small></button>
+<button class="agent" data-agent="Финансы AI"><div class="ico">💳</div><b>Финансы AI</b><small>Бюджет · Расходы · Накопления</small></button>
+<button class="agent" data-agent="Карьера AI"><div class="ico">🌐</div><b>Карьера AI</b><small>Работа · Резюме · Переезд</small></button>
+<button class="agent" data-agent="Аналитика AI"><div class="ico">📊</div><b>Аналитика AI</b><small>Исследования · Отчёты · Данные</small></button>
+</section>
+<div class="section">Быстрые действия</div><section class="actions">
+<button class="chip" data-prompt="Помоги составить план на неделю">План на неделю</button>
+<button class="chip" data-prompt="Помоги рассчитать мой бюджет">Рассчитать бюджет</button>
+<button class="chip" data-prompt="Помоги найти подходящую работу">Поиск работы</button>
+</section>
+<section class="chatbox" id="chat">
+<div class="chathead"><b id="agentTitle">Главный AI</b><small>● готов к работе</small></div>
+<div class="messages" id="messages"><div class="bubble ai">Привет! Я BAKHTIYAR AI. Напиши, с чего начнём.</div></div>
+<div class="composer"><textarea id="prompt" placeholder="Напиши сообщение..." rows="1"></textarea><button class="send" id="send">➤</button></div>
+<div class="status" id="status">Ответы требуют подключения API-ключа.</div>
+</section>
+</main><footer><span>⌂ Главная</span><span>▦ Агенты</span><span>◷ История</span><span>♙ Профиль</span></footer>
+<script>
+let agent="Главный AI";const history=[];
+const messages=document.getElementById("messages"),promptBox=document.getElementById("prompt"),statusBox=document.getElementById("status");
+function add(text,role){const el=document.createElement("div");el.className="bubble "+role;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight}
+function choose(name){agent=name;document.getElementById("agentTitle").textContent=name;document.getElementById("chat").scrollIntoView({behavior:"smooth"});statusBox.textContent="Выбран агент: "+name}
+document.querySelectorAll("[data-agent]").forEach(b=>b.addEventListener("click",()=>choose(b.dataset.agent)));
+document.querySelectorAll("[data-prompt]").forEach(b=>b.addEventListener("click",()=>{promptBox.value=b.dataset.prompt;promptBox.focus();document.getElementById("chat").scrollIntoView({behavior:"smooth"})}));
+async function send(){const text=promptBox.value.trim();if(!text)return;promptBox.value="";add(text,"user");history.push({role:"user",content:text});statusBox.textContent="BAKHTIYAR AI думает…";document.getElementById("send").disabled=true;
+try{const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({agent,messages:history})});const data=await r.json();if(!r.ok)throw new Error(data.error||"Ошибка запроса");add(data.reply,"ai");history.push({role:"assistant",content:data.reply});statusBox.textContent="Ответ получен"}
+catch(e){add("Ошибка: "+e.message,"ai");statusBox.textContent="Проверь подключение и настройки"}
+finally{document.getElementById("send").disabled=false}}
+document.getElementById("send").addEventListener("click",send);
+promptBox.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send()}});
+</script></body></html>
